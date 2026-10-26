@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ssa-tta"
+version = "0.1.0"
+description = "SSA: online test-time adaptation for vision-language models"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.24", "torch>=2.2", "Pillow>=9"]
+
+[project.optional-dependencies]
+images = ["open_clip_torch==3.3.0", "timm>=1.0,<2", "transformers>=4.44,<5", "medmnist>=3.0,<4"]
+
+[project.scripts]
+ssa-eval = "ssa.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["ssa*"]
+
+[tool.setuptools.package-data]
+ssa = ["medmnist_classes.json"]
